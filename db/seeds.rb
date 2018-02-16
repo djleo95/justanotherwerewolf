@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Card.create([{title: 'Werewolf'},
+  {title: 'Villager'},
+  {title: 'Seer'},
+  {title: 'Wizard'},
+  {title: 'Protector'},
+  {title: 'Hunter'},
+  {title: 'Wolfman'},
+  {title: 'Patriarch'},
+  {title: 'Cursed Wolf'}])
