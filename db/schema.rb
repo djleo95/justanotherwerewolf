@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216174912) do
+ActiveRecord::Schema.define(version: 20180217064321) do
 
   create_table "cards", force: :cascade do |t|
     t.string "title", default: "", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180216174912) do
 
   create_table "friends", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "friend"
+    t.integer "user2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20180216174912) do
     t.integer "number_of_player"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "state"
+    t.boolean "has_pass", default: false
+    t.string "password"
+    t.integer "capacity", default: 10
+    t.integer "leader"
   end
 
   create_table "gameusers", force: :cascade do |t|

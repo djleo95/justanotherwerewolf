@@ -1,0 +1,11 @@
+<% @rooms.each do |room| %>
+  <div>
+    <strong>ID:<%= room.id %></strong>
+    <%= room.number_of_player %><strong>/<%= room.capacity %></strong>
+    <small>created <%= time_ago_in_words room.created_at %> ago</small>
+    Status: <%= room.state %>
+    <%= room.has_pass %>
+    <%= link_to "Join", room_path(room.id), class: "btn_join_room",
+      "data-user-id": current_user.id, "data-game-id": room.id %>
+  </div>
+<% end %>

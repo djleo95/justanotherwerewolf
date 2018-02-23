@@ -1,0 +1,45 @@
+Welcome to Room <%= @room.id %>
+Current: <%= @room.number_of_player %>/<%= @room.capacity %>
+Status: <%= @room.state %>
+Leader: <%= @room.get_leader.nickname %>
+
+<!--forLEADER-->
+<% if current_user.id == @room.get_leader.id %>
+  <p>Pick cards
+    (<span class="" id="current_card_number">0</span>/<%= @room.capacity %>)
+  </p>
+
+  <div class="btn btn-primary" id="btn_pick_card_confirm"
+    data-room-id="<%= @room.id %>">Confirm</div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm">
+        <p class="text-center">Villager Side</p>
+        <div class="row">
+          <% Card.get_villager_side_card.each do |card| %>
+            <%= render "card_template", card: card %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <p class="text-center">Werewolf Side</p>
+        <div class="row">
+          <% Card.get_werewolf_side_card.each do |card| %>
+            <%= render "card_template", card: card %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <p class="text-center">Neutral Side</p>
+        <div class="row">
+          <% Card.get_neutral_side_card.each do |card| %>
+            <%= render "card_template", card: card %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
