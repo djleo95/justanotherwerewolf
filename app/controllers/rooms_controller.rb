@@ -4,8 +4,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    gameuser = Gameuser.new user_id: params[:user_id], game_id: params[:game_id]
-    gameuser.save
+    @new_room = Game.new
   end
 
   def show
@@ -19,10 +18,31 @@ class RoomsController < ApplicationController
     userArray.each_with_index  do |id, index|
       role = myArray[rand(myArray.length)]
       myArray.delete(role)
-      Gameuser.where(user_id: id, game_id: params[:id]).last.update_attributes role_id: role,
+      Gameuser.find_by(user_id: id, game_id: params[:id]).update_attributes role_id: role,
         current_role: role, position: index
     #############
 
+    end
+
+    respond_to do |f|
+      f.html
+      f.json
+    end
+  end
+
+  def create_message
+    game = Game.find_by_id current_user.in_room
+    round = game.current_round
+
+    message = Rounduser.new game_id: game.id, user_id: current_user.id,
+      round_id: round, choose1: params[:choose1], choose2: params[:choose2]
+    if message.save
+      ActionCable.server.broadcast "room_#{game.id}",
+        game_id: message.game_id,
+        user: message.user.nickname,
+        round: message.round_id,
+        choose1: params[:choose1]
+      head :ok
     end
   end
 end

@@ -16,18 +16,33 @@ Card.create([
   {title: 'Wolfman', side: 1},
   {title: 'Patriarch', side: 0},
   {title: 'Cursed Wolf', side: 1},
-  {title: 'Wild Child', side: 2}]);
+  {title: 'Wild Child', side: 0},
+  {title: 'Man With Rusty Sword', side: 0},
+  {title: 'Diseased', side: 0},
+  {title: 'Miss Mystery', side: 0},
+  {title: 'Little Girl', side: 0},
+  {title: 'Lycan', side: 0},
+  {title: 'Cult Leader', side: 2},
+  {title: 'Cursed Soul', side: 0},
+  {title: 'Doppelgancer', side: 0},
+  {title: 'Tough Guy', side: 0},
+  {title: 'Apprentice Seer', side: 0},
+  {title: 'Last Warrior', side: 0},
+  {title: 'Cupid', side: 0},
+  {title: 'Cupid1', side: 3},
+  {title: 'Cupid2', side: 3},
+  {title: 'Bear Leader', side: 0},
+  {title: 'Bloody Mary', side: 0},
+  {title: 'Bloody Mary Active', side: 4},
+  {title: 'Dream Wolf', side: 1},
+  {title: 'Fruit Brute', side: 1},
+  {title: 'Baby Wolf', side: 1},
+  {title: 'Tanner', side: 0},
+  {title: 'Spellcaster', side: 0},
+  {title: 'Dire Wolf', side: 1}]);
 
 Game.create([
-  {room_id: 1, state: 0, number_of_player: 1},
-  {room_id: 2, state: 1, number_of_player: 12},
-  {room_id: 3, state: 0, number_of_player: 1, has_pass: true},
-  {room_id: 4, state: 1, number_of_player: 20, has_pass: true},
-  {room_id: 5, state: 1, number_of_player: 24},
-  {room_id: 6, state: 0, number_of_player: 2},
-  {room_id: 7, state: 0, number_of_player: 2},
-  {room_id: 8, state: 2, number_of_player: 20},
-  {room_id: 9, state: 1, number_of_player: 12}])
+  {room_id: 1, state: 0, number_of_player: 1}])
 
 User.create([
   {email: 'user1@gmail.com', password: '123123',

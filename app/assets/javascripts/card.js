@@ -41,6 +41,10 @@ $(document).ready(function(){
       url: direct_url,
       data: {
         card: array.valueOf()
+      },
+      success: function(){
+        $('#for_room_leader').hide();
+        $('#playing').removeClass('d-none');
       }
     });
   });
