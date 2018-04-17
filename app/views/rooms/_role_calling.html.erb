@@ -1,0 +1,49 @@
+<div class="modal fade" id="roleCallingModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Role Calling</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <% if @gameuser %>
+          <%= @gameuser.get_role_title %>
+          <% case @gameuser.role_id %>
+            <% when 10 %>
+              Choose Your Mother:
+              <%= form_for :rounduser do |f| %>
+                <%= f.select :choose1, @room.get_all_player.collect {|p| [p.nickname, p.id]}, include_blank: true,
+                  class: "role_calling_choose1" %>
+              <% end %>
+            <% when 18 %>
+              Choose person you wanna copy
+              <%= form_for :rounduser do |f| %>
+                <%= f.select :choose1, @room.get_all_player.collect {|p| [p.nickname, p.id]}, include_blank: true,
+                  class: "role_calling_choose1" %>
+              <% end %>
+            <% when 22 %>
+              Choose a couple
+              <%= form_for :rounduser do |f| %>
+                Person1 <%= f.select :choose1, @room.get_all_player.collect {|p| [p.nickname, p.id]}, include_blank: true,
+                  class: "role_calling_choose1" %>
+                Person2 <%= f.select :choose1, @room.get_all_player.collect {|p| [p.nickname, p.id]}, include_blank: true,
+                  class: "role_calling_choose2" %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <div class="btn btn-primary" id="btn_role_calling_confirm">
+          Confirm
+        </div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

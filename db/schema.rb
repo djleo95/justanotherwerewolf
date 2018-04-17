@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20180227021048) do
   create_table "games", force: :cascade do |t|
     t.integer "room_id"
     t.integer "current_round"
-    t.integer "number_of_player"
+    t.integer "number_of_player", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "state"
+    t.integer "state", default: 0
     t.boolean "has_pass", default: false
     t.string "password"
     t.integer "capacity", default: 10
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180227021048) do
 
   create_table "roundusers", force: :cascade do |t|
     t.integer "round_id"
+    t.integer "role_id"
     t.integer "user_id"
     t.integer "game_id"
     t.integer "choose1"

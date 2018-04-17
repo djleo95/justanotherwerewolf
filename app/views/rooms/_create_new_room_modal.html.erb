@@ -1,0 +1,9 @@
+<%= form_for :game do |f| %>
+  <div>
+    Capacity: <%= f.number_field :capacity, min: 1, id: "new_room_capacity" %>
+  </div>
+  <div>
+    Password <%= f.check_box :has_pass, id: "room_has_pass_checkbox" %>
+    <%= f.password_field :password, class: "d-none", id: "new_room_password"%>
+  </div>
+<% end %>

@@ -1,19 +1,46 @@
-<div id="room_list">
-  <% @rooms.each do |room| %>
-    <div>
-      <strong>ID:<%= room.id %></strong>
-      <%= room.number_of_player %><strong>/<%= room.capacity %></strong>
-      <small>created <%= time_ago_in_words room.created_at %> ago</small>
-      Status: <%= room.state %>
-      <%= room.has_pass %>
-      <%= link_to "Join", room_path(room.id), class: "btn_join_room",
-        "data-user-id": current_user.id, "data-game-id": room.id %>
-    </div>
-  <% end %>
+<div id="room_list_container">
+  <div id="room_list">
+    <% @rooms.each do |room| %>
+      <div>
+        <strong>ID:<%= room.id %></strong>
+        <%= room.number_of_player %><strong>/<%= room.capacity %></strong>
+        <small>created <%= time_ago_in_words room.created_at %> ago</small>
+        Status: <%= room.state %>
+        <%= room.has_pass %>
+        <%= link_to "Join", room_path(room.id), class: "btn_join_room",
+          "data-user-id": current_user.id, "data-game-id": room.id %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div>
-  <div class="btn btn-primary" id="btn_create_new_room">
-    Create
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewRoomModal">
+  Create New Room
+</button>
+
+<!-- The Modal -->
+<div class="modal fade" id="createNewRoomModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create New Room</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= render "create_new_room_modal" %>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <div class="btn btn-primary" id="btn_create_new_room">
+          Create
+        </div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

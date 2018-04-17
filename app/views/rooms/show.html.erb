@@ -5,7 +5,8 @@ Leader: <%= @room.get_leader.nickname %>
 <div data-id="<%= @room.id %>" id="room_id" class="d-none"></div>
 
 <!--forLEADER-->
-<div id="for_room_leader">
+<% if current_user.id == @room.leader %>
+  <div id="for_room_leader">
   <% if current_user.id == @room.get_leader.id %>
     <p>Pick cards
       (<span class="" id="current_card_number">0</span>/<%= @room.capacity %>)
@@ -46,6 +47,7 @@ Leader: <%= @room.get_leader.nickname %>
     </div>
   <% end %>
 </div>
+<% end %>
 
 <div class="d-none" id="playing">
   <div class="btn btn-primary" id="playing_send_message" data-choose1="1">
@@ -53,3 +55,6 @@ Leader: <%= @room.get_leader.nickname %>
   </div>
 </div>
 <div id="messages" class="hidden"></div>
+<div class="start_game_div">
+  <%= render "game" %>
+</div>

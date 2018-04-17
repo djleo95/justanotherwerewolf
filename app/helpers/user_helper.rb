@@ -1,6 +1,7 @@
 module UserHelper
   def user_left_room user
-    gameuser = Gameuser.find_by game_id: user.in_room, user_id: user.id
-    gameuser.delete
+    gameuser = Gameuser.where user_id: user.id
+    gameuser.each.delete if gameuser.present?
+    user.in_room = -1
   end
 end
